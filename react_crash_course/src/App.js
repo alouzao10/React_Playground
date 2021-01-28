@@ -4,8 +4,10 @@ import { useState } from 'react';
 
 import Header from './Components/Header';
 import Tasks from './Components/TaskItems/Tasks';
+import AddTask from './Components/TaskItems/AddTask';
 
 function App() {
+  const [toggleTask, setToggle] = useState(false);
   const [tasks, setTasks] = useState([
     {
       id: 1,
@@ -26,6 +28,12 @@ function App() {
       reminder: true,
     },
   ]);
+
+  // Add Task
+  const addTask = (task) => {
+    //console.log(task);
+    setTasks([...tasks, task]);
+  };
 
   // Delete Task
   const deleteTask = (taskID) => {
@@ -54,7 +62,11 @@ function App() {
 
   return (
     <div className='container'>
-      <Header title='Terrific Task Tracker' />
+      <Header
+        title='Terrific Task Tracker'
+        displayTask={() => setToggle(!toggleTask)}
+      />
+      {toggleTask ? <AddTask addTask={addTask} /> : ''}
       {tasks.length === 0 ? (
         'No Tasks To Show'
       ) : (

@@ -3,16 +3,16 @@ import PropTypes from 'prop-types';
 
 import Button from './Button';
 
-function Header({ title }) {
+function Header({ title, displayTask }) {
   // Unique function to be used in the Button component
-  const btnClick = () => {
+  /*const btnClick = () => {
     console.log('Btn Click');
-  };
+  };*/
 
   return (
     <header className='header'>
       <h1>{title}</h1>
-      <Button color='green' text='Add Task' btnClick={btnClick} />
+      <Button color='green' text='Add Task' btnClick={displayTask} />
     </header>
   );
 }
