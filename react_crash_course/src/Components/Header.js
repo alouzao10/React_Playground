@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { useLocation } from 'react-router-dom';
 
 import Button from './Button';
 
@@ -9,10 +10,16 @@ function Header({ title, displayTask }) {
     console.log('Btn Click');
   };*/
 
+  const location = useLocation();
+
   return (
     <header className='header'>
       <h1>{title}</h1>
-      <Button color='green' text='Add Task' btnClick={displayTask} />
+      {location.pathname === '/' ? (
+        <Button color='green' text='Add Task' btnClick={displayTask} />
+      ) : (
+        ''
+      )}
     </header>
   );
 }
