@@ -28,7 +28,7 @@ function AddTransaction() {
       </h3>
       <form onSubmit={sendTransaction}>
         <div className='form-control'>
-          <label for='text'>Item</label>
+          <label>Item</label>
           <input
             type='text'
             name='item'
@@ -38,7 +38,7 @@ function AddTransaction() {
           />
         </div>
         <div className='form-control'>
-          <label for='amount'>
+          <label>
             Amount <br />
             (negative - expense, positive - income)
           </label>
