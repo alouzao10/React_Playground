@@ -25,9 +25,25 @@ export const GlobalProvider = ({ children }) => {
   // Passes in the current instance of the global state
   const [state, dispatch] = useReducer(AppReducer, initialState);
 
+  function removeItem(itemID) {
+    dispatch({
+      type: 'DELETE',
+      payload: itemID,
+    });
+  }
+
+  function addItem(newItem) {
+    dispatch({
+      type: 'ADD',
+      payload: newItem,
+    });
+  }
+
   // Return the Provider for access of the components to the global context and state
   return (
-    <GlobalContext.Provider value={{ transactions: state.transactions }}>
+    <GlobalContext.Provider
+      value={{ transactions: state.transactions, removeItem, addItem }}
+    >
       {children}
     </GlobalContext.Provider>
   );
