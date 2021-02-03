@@ -5,14 +5,24 @@
       "name": "Boba",
       "type": "Dog",
       "breed": "Mixed Breed",
-      "age": 1
+      "age": 1,
+      "owner": "Hailey"
     },
     {
       "id": 2,
       "name": "Ash",
       "type": "Cat",
       "breed": "Gray Tabby",
-      "age": 0.5
+      "age": 0.5,
+      "owner": "Alex"
+    },
+    {
+      "name": "Missy",
+      "type": "Cat",
+      "breed": "Mixed Color",
+      "age": 0.5,
+      "owner": "Yeya",
+      "id": 3
     }
   ],
   "owners": [
