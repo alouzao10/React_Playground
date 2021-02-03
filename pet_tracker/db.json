@@ -1,0 +1,30 @@
+{
+  "pets": [
+    {
+      "id": 1,
+      "name": "Boba",
+      "type": "Dog",
+      "breed": "Mixed Breed",
+      "age": 1
+    },
+    {
+      "id": 2,
+      "name": "Ash",
+      "type": "Cat",
+      "breed": "Gray Tabby",
+      "age": 0.5
+    }
+  ],
+  "owners": [
+    {
+      "id": 1,
+      "name": "Hailey",
+      "pet": "Boba"
+    },
+    {
+      "id": 2,
+      "name": "Alex",
+      "pet": "Ash"
+    }
+  ]
+}
