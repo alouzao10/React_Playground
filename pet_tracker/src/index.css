@@ -11,3 +11,57 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+hr {
+  background-color: black !important;
+  height: 1px;
+  border: none;
+}
+
+.siteHeader {
+  margin: auto;
+  border: 2px solid black;
+  padding: 5px;
+  text-align: center;
+  background-color: royalblue;
+}
+
+.navigation {
+  margin: 15px 0px;
+}
+
+.link {
+  padding: 5px;
+  background-color: cadetblue;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+  margin: 0px 5px;
+}
+
+.link:hover {
+  color: black;
+  background-color: cornflowerblue;
+}
+
+.sectionContent {
+  padding: 5px;
+}
+
+.sectionHeader {
+  text-align: center;
+  background-color: darkcyan;
+  margin: auto;
+  padding: 3px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.column {
+  flex: 50%;
+}
+
+.row {
+  display: flex;
+}

@@ -5,8 +5,8 @@ import { GlobalContext } from '../../Context/GlobalState';
 function Owners() {
   const { owners } = useContext(GlobalContext);
   return (
-    <div>
-      <h1>Owners</h1>
+    <div className='sectionContent'>
+      <h1 className='sectionHeader'>Owners</h1>
       {owners.map((owner) => (
         <>
           <h3>{owner.name}</h3>
