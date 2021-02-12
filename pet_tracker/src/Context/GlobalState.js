@@ -17,37 +17,37 @@ export const GlobalProvider = ({ children }) => {
 
   function addPet(newPet) {
     setState({
-      type: 'ADD_PET',
-      payload: newPet,
+      action: 'ADD_PET',
+      data: newPet,
     });
   }
 
   function removePet(petID) {
     setState({
-      type: 'REMOVE_PET',
-      payload: petID,
+      action: 'REMOVE_PET',
+      data: petID,
     });
   }
 
   function addOwner(newOwner) {
     setState({
-      type: 'ADD_OWNER',
-      payload: newOwner,
+      action: 'ADD_OWNER',
+      data: newOwner,
     });
   }
 
   function removeOwner(ownerID) {
     setState({
-      type: 'REMOVE_OWNER',
-      payload: ownerID,
+      action: 'REMOVE_OWNER',
+      data: ownerID,
     });
   }
 
   return (
     <GlobalContext.Provider
       value={{
-        owners: state.owners,
-        pets: state.pets,
+        owners: initialState.owners,
+        pets: initialState.pets,
         addPet,
         removePet,
         addOwner,

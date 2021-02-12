@@ -3,10 +3,21 @@ import React, { useContext, useState } from 'react';
 import { GlobalContext } from '../../Context/GlobalState';
 
 function Pets() {
-  const { pets } = useContext(GlobalContext);
+  const { pets, addPet } = useContext(GlobalContext);
 
   const [owner, setOwner] = useState('');
-  const [type, setType] = useState('');
+  const [type, setType] = useState('Dog');
+  const [name, setPetName] = useState('');
+  const [breed, setPetBreed] = useState('');
+  const [age, setPetAge] = useState(1);
+
+  const [petTypes, setPetTypes] = useState([
+    { id: 1, type: 'Dog' },
+    { id: 2, type: 'Cat' },
+    { id: 3, type: 'Fish' },
+    { id: 4, type: 'Bird' },
+    { id: 5, type: 'Other' },
+  ]);
 
   const updatePetItem = (e) => {
     let field = e.target.name;
@@ -15,6 +26,15 @@ function Pets() {
     switch (field) {
       case 'owner':
         setOwner(value);
+        break;
+      case 'petName':
+        setPetName(value);
+        break;
+      case 'petBreed':
+        setPetBreed(value);
+        break;
+      case 'petAge':
+        setPetAge(value);
         break;
       case 'type':
         setType(value);
@@ -26,8 +46,26 @@ function Pets() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Pet', type);
-    console.log('Owner', owner);
+    if (owner === '' || owner === undefined || owner === null) {
+      alert("Please Enter Owner's Name");
+    } else if (name === '' || name === undefined || name === null) {
+      alert("Please Enter Pet's Name");
+    } else if (age === '' || age === undefined || age === null) {
+      alert("Please Enter Pet's Age");
+    } else if (breed === '' || breed === undefined || breed === null) {
+      alert("Please Enter Pet's Breed");
+    } else if (type === '' || type === undefined || type === null) {
+      alert("Please Select Pet's Type");
+    }
+    let newPet = {
+      id: Math.random() * 100 + 1,
+      name,
+      type,
+      breed,
+      age,
+      owner,
+    };
+    addPet(newPet);
   };
 
   return (
@@ -36,7 +74,7 @@ function Pets() {
       <div className='row'>
         <div className='column'>
           <h2>Enter Pet Information:</h2>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} className='petForm'>
             <label>Owner's Name: </label>
             <input
               type='text'
@@ -44,6 +82,32 @@ function Pets() {
               name='owner'
               onChange={updatePetItem}
               placeholder='Owner'
+            />
+            <br />
+            <label>Pet Name: </label>
+            <input
+              type='text'
+              value={name}
+              name='petName'
+              onChange={updatePetItem}
+              placeholder='Pet Name'
+            />
+            <br />
+            <label>Pet Breed: </label>
+            <input
+              type='text'
+              value={breed}
+              name='petBreed'
+              onChange={updatePetItem}
+              placeholder='Pet Breed'
+            />
+            <br />
+            <label>Pet Age: </label>
+            <input
+              type='number'
+              value={age}
+              name='petAge'
+              onChange={updatePetItem}
             />
             <br />
             <label>Pet Type: </label>
@@ -56,19 +120,13 @@ function Pets() {
               <option disabled defaultValue>
                 Select a Pet
               </option>
-              <option value='dog' key={1}>
-                Dog
-              </option>
-              <option value='cat' key={2}>
-                Cat
-              </option>
-              <option value='fish' key={3}>
-                Fish
-              </option>
-              <option value='other' key={4}>
-                Other
-              </option>
+              {petTypes.map((petType) => (
+                <option value={petType.type} key={petType.id}>
+                  {petType.type}
+                </option>
+              ))}
             </select>
+            <br />
             <br />
             <button type='submit'>Submit My Pet</button>
           </form>
@@ -79,7 +137,7 @@ function Pets() {
             <div key={pet.id}>
               <h3>{pet.name}</h3>
               <p>
-                Is a {pet.type} of {pet.breed}
+                Is a {pet.breed} {pet.type}
               </p>
               <p>Is {pet.age} years old</p>
               <p>Is currently owned by {pet.owner}</p>

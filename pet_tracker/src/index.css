@@ -65,3 +65,11 @@ hr {
 .row {
   display: flex;
 }
+
+.petForm {
+  padding: 10px;
+}
+
+.petForm input {
+  margin: 10px 0px;
+}
