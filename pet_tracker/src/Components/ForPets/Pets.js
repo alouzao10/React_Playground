@@ -74,7 +74,7 @@ function Pets() {
       <div className='row'>
         <div className='column'>
           <h2>Enter Pet Information:</h2>
-          <form onSubmit={handleSubmit} className='petForm'>
+          <form onSubmit={handleSubmit} className='formInfo'>
             <label>Owner's Name: </label>
             <input
               type='text'
@@ -133,6 +133,7 @@ function Pets() {
         </div>
         <div className='column'>
           <h2>Our Pets</h2>
+          <hr />
           {pets.map((pet) => (
             <div key={pet.id}>
               <h3>{pet.name}</h3>

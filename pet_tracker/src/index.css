@@ -66,10 +66,10 @@ hr {
   display: flex;
 }
 
-.petForm {
+.formInfo {
   padding: 10px;
 }
 
-.petForm input {
+.formInfo input {
   margin: 10px 0px;
 }
