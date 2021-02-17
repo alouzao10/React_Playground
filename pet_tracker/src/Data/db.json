@@ -5,23 +5,20 @@
       "name": "Boba",
       "type": "Dog",
       "breed": "Mixed Breed",
-      "age": 1,
-      "owner": "Hailey"
+      "age": 1
     },
     {
       "id": 2,
       "name": "Ash",
       "type": "Cat",
       "breed": "Gray Tabby",
-      "age": 0.5,
-      "owner": "Alex"
+      "age": 0.5
     },
     {
       "name": "Missy",
       "type": "Cat",
       "breed": "Mixed Color",
       "age": 0.5,
-      "owner": "Yeya",
       "id": 3
     },
     {
@@ -29,16 +26,14 @@
       "name": "Betty Boop",
       "type": "Cat",
       "breed": "Calico",
-      "age": "5",
-      "owner": "Sally"
+      "age": "5"
     },
     {
       "id": 58.978585404108806,
       "name": "Stewart",
       "type": "Dog",
       "breed": "Golden Doodle",
-      "age": ".25",
-      "owner": "Paully"
+      "age": ".25"
     }
   ],
   "owners": [

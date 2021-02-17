@@ -15,7 +15,8 @@ export default (state, payload) => {
       break;
     case 'ADD_OWNER':
       let newOwner = payload.data;
-      fetch('http://localhost:5000/owners/', {
+      console.log(newOwner);
+      fetch('http://localhost:5000/owners', {
         method: 'POST',
         headers: { 'Content-type': 'application/json' },
         body: JSON.stringify(newOwner),
@@ -25,7 +26,12 @@ export default (state, payload) => {
           return [...state.owners, data];
         });
     case 'REMOVE_OWNER':
-      break;
+      fetch(`http://localhost:5000/owners/${payload.data}`, {
+        method: 'DELETE',
+      });
+      fetch('http://localhost:5000/owners')
+        .then((res) => res.json())
+        .then((data) => [...state.owners, data]);
     default:
       break;
   }

@@ -46,9 +46,7 @@ function Pets() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (owner === '' || owner === undefined || owner === null) {
-      alert("Please Enter Owner's Name");
-    } else if (name === '' || name === undefined || name === null) {
+    if (name === '' || name === undefined || name === null) {
       alert("Please Enter Pet's Name");
     } else if (age === '' || age === undefined || age === null) {
       alert("Please Enter Pet's Age");
@@ -75,15 +73,6 @@ function Pets() {
         <div className='column'>
           <h2>Enter Pet Information:</h2>
           <form onSubmit={handleSubmit} className='formInfo'>
-            <label>Owner's Name: </label>
-            <input
-              type='text'
-              value={owner}
-              name='owner'
-              onChange={updatePetItem}
-              placeholder='Owner'
-            />
-            <br />
             <label>Pet Name: </label>
             <input
               type='text'
@@ -141,7 +130,6 @@ function Pets() {
                 Is a {pet.breed} {pet.type}
               </p>
               <p>Is {pet.age} years old</p>
-              <p>Is currently owned by {pet.owner}</p>
               <hr />
             </div>
           ))}
