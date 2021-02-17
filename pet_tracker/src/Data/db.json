@@ -20,20 +20,6 @@
       "breed": "Mixed Color",
       "age": 0.5,
       "id": 3
-    },
-    {
-      "id": 18.226841273532134,
-      "name": "Betty Boop",
-      "type": "Cat",
-      "breed": "Calico",
-      "age": "5"
-    },
-    {
-      "id": 58.978585404108806,
-      "name": "Stewart",
-      "type": "Dog",
-      "breed": "Golden Doodle",
-      "age": ".25"
     }
   ],
   "owners": [

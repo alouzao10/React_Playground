@@ -3,7 +3,7 @@ import React, { useContext, useState } from 'react';
 import { GlobalContext } from '../../Context/GlobalState';
 
 function Pets() {
-  const { pets, addPet } = useContext(GlobalContext);
+  const { pets, addPet, removePet } = useContext(GlobalContext);
 
   const [owner, setOwner] = useState('');
   const [type, setType] = useState('Dog');
@@ -66,6 +66,10 @@ function Pets() {
     addPet(newPet);
   };
 
+  const handleRemove = (petID) => {
+    removePet(petID);
+  };
+
   return (
     <div className='sectionContent'>
       <h1 className='sectionHeader'>Pets</h1>
@@ -126,6 +130,7 @@ function Pets() {
           {pets.map((pet) => (
             <div key={pet.id}>
               <h3>{pet.name}</h3>
+              <button onClick={() => removePet(pet.id)}>Remove Pet</button>
               <p>
                 Is a {pet.breed} {pet.type}
               </p>

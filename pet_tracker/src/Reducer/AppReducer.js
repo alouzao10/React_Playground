@@ -12,7 +12,12 @@ export default (state, payload) => {
           return [...state.pets, data];
         });
     case 'REMOVE_PET':
-      break;
+      fetch(`http://localhost:5000/pets/${payload.data}`, {
+        method: 'DELETE',
+      });
+      fetch('http://localhost:5000/pets')
+        .then((res) => res.json())
+        .then((data) => [...state.pets, data]);
     case 'ADD_OWNER':
       let newOwner = payload.data;
       console.log(newOwner);
