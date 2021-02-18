@@ -1,37 +1,38 @@
 {
   "pets": [
     {
-      "id": 1,
-      "name": "Boba",
-      "type": "Dog",
-      "breed": "Mixed Breed",
-      "age": 1
-    },
-    {
-      "id": 2,
-      "name": "Ash",
-      "type": "Cat",
-      "breed": "Gray Tabby",
-      "age": 0.5
-    },
-    {
-      "name": "Missy",
-      "type": "Cat",
-      "breed": "Mixed Color",
-      "age": 0.5,
-      "id": 3
+      "id": 6214,
+      "name": "Goldie",
+      "type": "Fish",
+      "breed": "Gold",
+      "age": "15"
     }
   ],
   "owners": [
     {
-      "id": 1,
-      "name": "Hailey",
-      "pet": "Boba"
+      "id": 2858,
+      "name": "Wanda",
+      "pet": "Ricky"
     },
     {
-      "id": 2,
+      "id": 9316,
+      "name": "Vinny",
+      "pet": "Polly"
+    },
+    {
+      "id": 747,
       "name": "Alex",
-      "pet": "Ash"
+      "pet": "Max"
+    },
+    {
+      "id": 863,
+      "name": "Dana",
+      "pet": "Stewart"
+    },
+    {
+      "id": 5247,
+      "name": "Sarah",
+      "pet": "Betty Boop"
     }
   ]
 }

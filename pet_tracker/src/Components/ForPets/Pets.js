@@ -56,12 +56,11 @@ function Pets() {
       alert("Please Select Pet's Type");
     }
     let newPet = {
-      id: Math.random() * 100 + 1,
+      id: Math.floor(Math.random() * 10000 + 1),
       name,
       type,
       breed,
       age,
-      owner,
     };
     addPet(newPet);
   };
@@ -127,6 +126,7 @@ function Pets() {
         <div className='column'>
           <h2>Our Pets</h2>
           <hr />
+          {pets.length === 0 ? <p>No Pets</p> : ''}
           {pets.map((pet) => (
             <div key={pet.id}>
               <h3>{pet.name}</h3>

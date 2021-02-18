@@ -29,10 +29,10 @@ export const GlobalProvider = ({ children }) => {
     });
   }
 
-  function addOwner(newOwner) {
+  function addOwner(newOwner, petID) {
     setState({
       action: 'ADD_OWNER',
-      data: newOwner,
+      data: { newOwner, petID },
     });
   }
 

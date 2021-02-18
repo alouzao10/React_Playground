@@ -6,7 +6,7 @@ function Owners() {
   const { owners, pets, addOwner, removeOwner } = useContext(GlobalContext);
 
   const [name, setOwnerName] = useState('');
-  const [pet, setOwnerPet] = useState('');
+  const [pet, setOwnerPet] = useState({ name: pets[0].name, id: pets[0].id });
 
   const updateOwnerInfo = (e) => {
     let field = e.target.name;
@@ -17,7 +17,10 @@ function Owners() {
         setOwnerName(value);
         break;
       case 'ownerPet':
-        setOwnerPet(value);
+        setOwnerPet({
+          name: pets.filter((pet) => pet.id == value)[0].name,
+          id: parseInt(value),
+        });
         break;
       default:
         break;
@@ -31,8 +34,13 @@ function Owners() {
     } else if (pet === '' || pet === undefined || pet === null) {
       alert('Please Select Your Pet(s)');
     }
-    let ownerInfo = { id: Math.random() * 100 + 1, name, pet };
-    addOwner(ownerInfo);
+    let ownerInfo = {
+      id: Math.floor(Math.random() * 10000 + 1),
+      name,
+      pet: pet.name,
+    };
+    //console.log(ownerInfo, pet.id);
+    addOwner(ownerInfo, pet.id);
     setOwnerName('');
     setOwnerPet(pets[0].name);
   };
@@ -58,22 +66,22 @@ function Owners() {
               placeholder='Jon Doe'
             />
             <br />
-            <label>Select Your Pet(s): </label>
+            <label>Pet to adopt: </label>
             <select
-              value={pet}
               name='ownerPet'
               onChange={updateOwnerInfo}
-              placeholder='Which is your pet?'
+              placeholder='Which pet to adopt?'
             >
               <option disabled defaultValue>
-                Which is your pet?
+                Select a pet to adopt
               </option>
               {pets.map((pet) => (
-                <option value={pet.name} key={pet.id}>
-                  {pet.name}
+                <option value={pet.id} key={pet.id}>
+                  {pet.name} a {pet.breed} {pet.type}
                 </option>
               ))}
             </select>
+            <br />
             <br />
             <button type='submit'>Submit My Info</button>
           </form>
@@ -82,7 +90,7 @@ function Owners() {
           <h2>Our Owners</h2>
           <hr />
           {owners.map((owner) => (
-            <>
+            <div key={owner.id}>
               <h3>{owner.name}</h3>
               <button onClick={() => handleRemove(owner.id)}>
                 Remove Owner
@@ -90,7 +98,7 @@ function Owners() {
               <p>Is the proud owner of:</p>
               <li>{owner.pet}</li>
               <hr />
-            </>
+            </div>
           ))}
         </div>
       </div>
