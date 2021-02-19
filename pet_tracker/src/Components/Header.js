@@ -1,13 +1,7 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
-
-
-import { GlobalContext } from '../Context/GlobalState';
-
 function Header() {
-  const { pets, owners } = useContext(GlobalContext);
-
   return (
     <header className='siteHeader'>
       <h1>Welcome To Pet People</h1>

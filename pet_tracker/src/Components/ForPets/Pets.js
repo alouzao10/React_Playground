@@ -5,7 +5,6 @@ import { GlobalContext } from '../../Context/GlobalState';
 function Pets() {
   const { pets, addPet, removePet } = useContext(GlobalContext);
 
-  const [owner, setOwner] = useState('');
   const [type, setType] = useState('Dog');
   const [name, setPetName] = useState('');
   const [breed, setPetBreed] = useState('');
@@ -22,11 +21,7 @@ function Pets() {
   const updatePetItem = (e) => {
     let field = e.target.name;
     let value = e.target.value;
-    //console.log(field, value);
     switch (field) {
-      case 'owner':
-        setOwner(value);
-        break;
       case 'petName':
         setPetName(value);
         break;
@@ -63,10 +58,6 @@ function Pets() {
       age,
     };
     addPet(newPet);
-  };
-
-  const handleRemove = (petID) => {
-    removePet(petID);
   };
 
   return (
@@ -120,24 +111,29 @@ function Pets() {
             </select>
             <br />
             <br />
-            <button type='submit'>Submit My Pet</button>
+            <button className='submitBtn' type='submit'>
+              Submit My Pet
+            </button>
           </form>
         </div>
         <div className='column'>
-          <h2>Our Pets</h2>
-          <hr />
-          {pets.length === 0 ? <p>No Pets</p> : ''}
-          {pets.map((pet) => (
-            <div key={pet.id}>
-              <h3>{pet.name}</h3>
-              <button onClick={() => removePet(pet.id)}>Remove Pet</button>
-              <p>
-                Is a {pet.breed} {pet.type}
-              </p>
-              <p>Is {pet.age} years old</p>
-              <hr />
-            </div>
-          ))}
+          <h2>Our Pets:</h2>
+          <div className='pets'>
+            {pets.length === 0 ? <h1>Shelter is Empty!</h1> : ''}
+            {pets.map((pet) => (
+              <div key={pet.id}>
+                <h3>{pet.name}</h3>
+                <button className='removeBtn' onClick={() => removePet(pet.id)}>
+                  Remove Pet
+                </button>
+                <p>
+                  Is a {pet.breed} {pet.type}
+                </p>
+                <p>Is {pet.age} years old</p>
+                <hr />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

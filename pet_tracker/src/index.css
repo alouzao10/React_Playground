@@ -43,6 +43,7 @@ hr {
 .link:hover {
   color: black;
   background-color: cornflowerblue;
+  cursor: pointer;
 }
 
 .sectionContent {
@@ -68,8 +69,54 @@ hr {
 
 .formInfo {
   padding: 10px;
+  border: 1px solid black;
+  width: 95%;
+  background-color: white;
 }
 
 .formInfo input {
   margin: 10px 0px;
+}
+
+.submitBtn {
+  padding: 5px;
+  background-color: cadetblue;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+  margin: 0px 5px;
+}
+
+.submitBtn:hover {
+  color: black;
+  background-color: lightgreen;
+  cursor: pointer;
+}
+
+.removeBtn {
+  padding: 5px;
+  background-color: salmon;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+  margin: 0px 5px;
+}
+
+.removeBtn:hover {
+  color: black;
+  background-color: red;
+  cursor: pointer;
+}
+
+.owners,
+.pets, .content {
+  border: 1px solid black;
+  padding: 10px;
+  background-color: white;
+}
+
+body {
+  background-color: lightskyblue;
 }

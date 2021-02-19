@@ -6,7 +6,10 @@ function Owners() {
   const { owners, pets, addOwner, removeOwner } = useContext(GlobalContext);
 
   const [name, setOwnerName] = useState('');
-  const [pet, setOwnerPet] = useState({ name: pets[0].name, id: pets[0].id });
+  const [pet, setOwnerPet] = useState({
+    name: pets.length !== 0 ? pets[0].name : 'N/A',
+    id: pets.length !== 0 ? pets[0].id : 0,
+  });
 
   const updateOwnerInfo = (e) => {
     let field = e.target.name;
@@ -83,23 +86,35 @@ function Owners() {
             </select>
             <br />
             <br />
-            <button type='submit'>Submit My Info</button>
+            <button className='submitBtn' type='submit'>
+              Submit My Info
+            </button>
           </form>
         </div>
         <div className='column'>
-          <h2>Our Owners</h2>
-          <hr />
-          {owners.map((owner) => (
-            <div key={owner.id}>
-              <h3>{owner.name}</h3>
-              <button onClick={() => handleRemove(owner.id)}>
-                Remove Owner
-              </button>
-              <p>Is the proud owner of:</p>
-              <li>{owner.pet}</li>
-              <hr />
-            </div>
-          ))}
+          <h2>Our Owners:</h2>
+          <div className='owners'>
+            {owners.length === 0 ? <h1>No Owners</h1> : ''}
+            {owners.map((owner) => (
+              <div key={owner.id}>
+                <h3>
+                  {owner.name}
+                  <span>
+                    <button
+                      className='removeBtn'
+                      onClick={() => handleRemove(owner.id)}
+                    >
+                      Remove Owner
+                    </button>
+                  </span>
+                </h3>
+
+                <p>Is the proud owner of:</p>
+                <li>{owner.pet}</li>
+                <hr />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>
