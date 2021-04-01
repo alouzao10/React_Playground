@@ -1,4 +1,9 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
+// Implement the Redux Store
+// Connect to the Store from the Provider at the App level
+import { connect } from "react-redux";
+import { fetchPosts } from "../Redux/Actions/postActions";
 
 class Posts extends Component {
    constructor(props) {
@@ -8,22 +13,24 @@ class Posts extends Component {
       };
    }
 
+   // Call the action to fetch the posts
    componentWillMount() {
       console.log("Component Will Mount");
-      // Make the fetch request to get posts on the component initial render
-      fetch("https://jsonplaceholder.typicode.com/posts")
-         .then((ret) => ret.json())
-         .then((data) => {
-            this.setState({ posts: data });
-            console.log(data);
-         }); // Put the data into the state
+      this.props.fetchPosts();
+   }
+
+   // Call to get the latest state from the Store
+   componentWillReceiveProps(nextProps) {
+      if (nextProps.newPost) {
+         this.props.posts.unshift(nextProps.newPost); // Adds new post to top
+      }
    }
 
    render() {
       return (
          <div>
             <h1>Posts</h1>
-            {this.state.posts.map((post, i) => (
+            {this.props.posts.map((post, i) => (
                <div key={i}>
                   <h3>{post.title}</h3>
                   <p>{post.body}</p>
@@ -35,4 +42,18 @@ class Posts extends Component {
    }
 }
 
-export default Posts;
+Posts.propTypes = {
+   fetchPosts: PropTypes.func.isRequired,
+   posts: PropTypes.array.isRequired,
+   newPost: PropTypes.object,
+};
+
+// Need to use the connect to connect with the store included by the Provider
+// Way to access the state of the Store and actions, map the state to the properties
+// The Action is placed into props
+const mapStateToProps = (state) => ({
+   posts: state.posts.posts,
+   newPost: state.posts.post,
+});
+
+export default connect(mapStateToProps, { fetchPosts })(Posts);
